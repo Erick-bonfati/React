@@ -1,11 +1,10 @@
-import '../styles/Home.css'
-import {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
-function Saudacao(props) { // props é um objeto que contém as propriedades passadas para o componente
+export function Saudacao(props) { // props é um objeto que contém as propriedades passadas para o componente
   return <h1>Olá, {props.nome} </h1>
 }
 
-function Status({online}) {
+export function Status({online}) {
   return (
     <div>
       {online ? <p>Usuário está online</p> : <p>Usuário está offline</p>}
@@ -13,7 +12,7 @@ function Status({online}) {
   );
 }
 
-function Relogio() {
+export function Relogio() {
   const [agora, setAgora] = useState(new Date());
 
   //Uso do useEffect para atualizar o relógio a cada segundo
@@ -37,15 +36,15 @@ function Relogio() {
   )
 }
 
-function Botao() {
+export function Botao() {
   return <button className="meu-botao">Clique aqui</button>;
 }
 
-function ComEstilo() {
+export function ComEstilo() {
   return <p style={{color: "red", fontSize: "18px"}}>Texto vermelho</p>
 }
 
-function Contador() {
+export function Contador() {
   const [numero, setNumero] = useState(0);
 
   return (
@@ -56,7 +55,7 @@ function Contador() {
   );
 }
 
-function LoginUser() {
+export function LoginUser() {
   const [logado, setLogado] = useState(false);
   return (
     <div>
@@ -70,18 +69,3 @@ function LoginUser() {
   )
   
 }
-
-export default function Home() {
-  return (
-    <section className="home">
-      <LoginUser />
-      <Status online={true} /> 
-      <Relogio />
-      <Saudacao nome="Erick" />
-      <Botao />
-      <ComEstilo />
-      <Contador />
-    </section>
-  );
-}
-

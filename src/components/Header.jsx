@@ -1,4 +1,5 @@
-import '../styles/Header.css'
+import '../assets/styles/Header.css'
+import { Link } from 'react-router-dom';
 
 export default function Header() {
   return (
@@ -9,17 +10,11 @@ export default function Header() {
         </div>
 
         <nav className="header__nav">
-          <a className="header__link" href="#">Dashboard</a>
-          <a className="header__link" href="#">Transações</a>
-          <a className="header__link" href="#">Relatórios</a>
-          <a className="header__link" href="#">Configurações</a>
+          <Link to="/modulo1" className="header__link">Modulo1</Link>
+          <Link to="/modulo2" className="header__link">Modulo2</Link>
+          <Link to="/modulo3" className="header__link">Modulo3</Link>
+          <Link to="/modulo4" className="header__link">Modulo4</Link>
         </nav>
-
-        <div className="header__cta">
-          <button className="header__button" type="button">
-            Entrar
-          </button>
-        </div>
 
         <div className="header__menu">
           <button className="header__menu-button" type="button" aria-label="Abrir menu">
