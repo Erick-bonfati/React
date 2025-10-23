@@ -1,0 +1,87 @@
+import '../styles/Home.css'
+import {useState, useEffect} from 'react';
+
+function Saudacao(props) { // props é um objeto que contém as propriedades passadas para o componente
+  return <h1>Olá, {props.nome} </h1>
+}
+
+function Status({online}) {
+  return (
+    <div>
+      {online ? <p>Usuário está online</p> : <p>Usuário está offline</p>}
+    </div>
+  );
+}
+
+function Relogio() {
+  const [agora, setAgora] = useState(new Date());
+
+  //Uso do useEffect para atualizar o relógio a cada segundo
+  useEffect(() => {
+    const intervalo = setInterval(() => {
+      setAgora(new Date());
+    }, 1000);
+    
+    return () => clearInterval(intervalo); // Limpeza do intervalo ao desmontar o componente
+  });
+
+  const horas = agora.getHours().toString().padStart(2, '0');
+  const minutos = agora.getMinutes().toString().padStart(2, '0');
+  const segundos = agora.getSeconds().toString().padStart(2, '0');
+
+  return (
+    <div>
+      <h2>Relógio Atual</h2>
+      <p>{horas}:{minutos}:{segundos}</p>
+    </div>
+  )
+}
+
+function Botao() {
+  return <button className="meu-botao">Clique aqui</button>;
+}
+
+function ComEstilo() {
+  return <p style={{color: "red", fontSize: "18px"}}>Texto vermelho</p>
+}
+
+function Contador() {
+  const [numero, setNumero] = useState(0);
+
+  return (
+    <div>
+      <p>Você clicou o {numero} vezes</p>
+      <button onClick={() => setNumero(numero + 1)}>Clique aqui</button>
+    </div>
+  );
+}
+
+function LoginUser() {
+  const [logado, setLogado] = useState(false);
+  return (
+    <div>
+        <p>
+          {logado ? "Bem-vindo de volta!" : "Por favor, faça login."}
+        </p>
+        <button onClick={() => setLogado(!logado === true)}>
+          {logado ? "Logout" : "Login"}
+        </button>
+      </div>
+  )
+  
+}
+
+export default function Home() {
+  return (
+    <section className="home">
+      <LoginUser />
+      <Status online={true} /> 
+      <Relogio />
+      <Saudacao nome="Erick" />
+      <Botao />
+      <ComEstilo />
+      <Contador />
+    </section>
+  );
+}
+

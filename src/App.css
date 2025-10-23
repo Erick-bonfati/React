@@ -1,0 +1,12 @@
+.app {
+  min-height: 100vh;
+  background: #0f172a;
+  color: #e2e8f0;
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.app__main {
+  margin: 0 auto;
+  max-width: 1120px;
+  padding: 48px 16px;
+}
