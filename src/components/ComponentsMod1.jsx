@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export function Saudacao(props) { // props é um objeto que contém as propriedades passadas para o componente
   return <h1>Olá, {props.nome} </h1>
@@ -66,6 +67,34 @@ export function LoginUser() {
           {logado ? "Logout" : "Login"}
         </button>
       </div>
-  )
-  
+  )  
+}
+
+export function RegisterLogin() {
+  const navigate = useNavigate(); // Hook do react-router-dom para navegação programática
+
+  function fazerRegistro() {
+    // Lógica de registro aqui
+    // Após o registro, redirecionar para a página de login
+    navigate('/login');
+  };
+
+  return <button onClick={fazerRegistro}>Registrar</button>;
+}
+
+export function NavegarPerfil() {
+  const navigate = useNavigate();
+
+  const inputPerfil = React.useRef(); // Referência para o input do nome do usuário
+
+  function irParaPerfil() {
+    navigate(`/usuario/${inputPerfil.current.value}`); // Navega para a rota do perfil com o nome do usuário
+  }
+
+  return (
+    <div>
+      <input type="text" ref={inputPerfil} placeholder="Digite o nome do usuário" />
+      <button onClick={irParaPerfil}>Ir para o Perfil</button>
+    </div>
+  );
 }
