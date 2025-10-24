@@ -1,12 +1,15 @@
 // import '../assets/styles/Modulo3.css'
 
-import * as ComponentsMod2 from '../components/ComponentsMod2.jsx';
+import { ContadorRedux, ListaUsuarioMemo, Pai, InputFoco, ContadorRender } from '../components/ComponentsMod3.jsx';
 
 export default function Modulo3() {
   return (
     <div>
-      <h2>Modulo 3</h2>
-      <p>Conteúdo do Modulo 3</p>
+      <ContadorRedux />
+      <ListaUsuarioMemo usuarios={[{ id: 1, nome: "João" }, { id: 2, nome: "Maria" }, { id: 3, nome: "Erick" }]} />
+      <Pai />
+      <InputFoco />
+      <ContadorRender />
     </div>
   )
 }

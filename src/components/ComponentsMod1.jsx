@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import api from '../services/api.js'; // Importa a instância do axios configurada
 
 export function Saudacao(props) { // props é um objeto que contém as propriedades passadas para o componente
   return <h1>Olá, {props.nome} </h1>
@@ -97,4 +98,28 @@ export function NavegarPerfil() {
       <button onClick={irParaPerfil}>Ir para o Perfil</button>
     </div>
   );
+}
+
+export function ListaUsuarios() {
+  const [usuarios, setUsuarios] = useState([])
+  const [carregando, setCarregando] = useState(true)
+  const [erro, setErro] = useState(null)
+
+  useEffect(() => {
+    api.get("/users") // Usando a instância do axios configurada
+      .then(res => setUsuarios(res.data))
+      .catch(e => setErro(e.message))
+      .finally(() => setCarregando(false))
+  }, [])
+
+  if (carregando) return <p>Carregando...</p>
+  if (erro) return <p>{erro}</p>
+
+  return (
+    <ul>
+      {usuarios.map(u => (
+        <li key={u.id}>{u.name}</li>
+      ))}
+    </ul>
+  )
 }

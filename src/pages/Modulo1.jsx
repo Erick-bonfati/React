@@ -1,7 +1,7 @@
 import '../assets/styles/Modulo1.css'
 import * as ComponentsMod1 from '../components/ComponentsMod1.jsx';
 
-const { Saudacao, Status, Relogio, Botao, ComEstilo, Contador, LoginUser, RegisterLogin, NavegarPerfil } = ComponentsMod1;
+const { Saudacao, Status, Relogio, Botao, ComEstilo, Contador, LoginUser, RegisterLogin, NavegarPerfil, ListaUsuarios } = ComponentsMod1;
 
 
 
@@ -17,6 +17,7 @@ export default function Modulo1() {
       <Contador />
       <RegisterLogin />
       <NavegarPerfil />
+      <ListaUsuarios />
     </section>
   );
 }

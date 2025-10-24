@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useState, useEffect, useContext } from 'react';
+import { UsuarioContext } from '../context/UsuarioContext';
 
 export function BotaoEvento() {
   const [numero, setNumero] = useState(0);
@@ -61,4 +61,9 @@ export function LimpaEfeitoUseEffect() {
 
     return () => clearInterval(intervalo);
   }, []);
+}
+
+export function Saudacao() {
+  const { usuario } = useContext(UsuarioContext);
+  return <h1>Olá, {usuario.nome}!</h1>;
 }
